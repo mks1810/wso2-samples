@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="vfs_sample"
+       transports="vfs http https"
+       startOnLoad="true">
+   <description/>
+   <target>
+      <inSequence>
+         <log level="full"/>
+         </inSequence>
+      <outSequence>
+         <log level="full"/>
+      </outSequence>  
+   </target>
+   <parameter name="transport.PollInterval">10</parameter>
+   <parameter name="transport.vfs.FileURI">file:///home/mks/workspace/ESB_Workspace/input</parameter>
+   <parameter name="transport.vfs.ContentType">text/xml</parameter>
+   <parameter name="transport.vfs.ActionAfterProcess">MOVE</parameter>
+   <parameter name="transport.vfs.MoveAfterFailure">file:///home/mks/workspace/ESB_Workspace/failure</parameter>
+   <parameter name="transport.vfs.ActionAfterFailure">MOVE</parameter>
+   <parameter name="transport.vfs.FileNamePattern">.*\.xml</parameter>
+   <parameter name="transport.vfs.MoveAfterProcess">file:///home/mks/workspace/ESB_Workspace/output</parameter>
+</proxy>
